@@ -10,10 +10,10 @@ function Home () {
   
 
     return(
-        <HomeStl>
-          <Header />
-          <h2>HOME</h2>
-        </HomeStl>
+      <HomeStl>
+        <Header />
+        <h2>HOME</h2>
+      </HomeStl>
 
     )
 };
