@@ -8,6 +8,9 @@ export const GlobalStyle = createGlobalStyle`
         list-style: none;
         box-sizing: border-box;        
     };
+    body{
+        font-family: 'Inter';
+    }
     :root{
         --color-brand-1: #4529E6;
         --color-brand-2: #5126EA;
@@ -44,4 +47,5 @@ export const GlobalStyle = createGlobalStyle`
         --color-random-11: #5700E3;
         --color-random-12: #30007D;
     }
+
 `;
