@@ -12,7 +12,6 @@ padding: 0 1.5rem 0 1.5rem;
 height: 80px;
 
 background-color: var(--color-grey-6);
-border: solid greenyellow;
 
 .logo{
   display: flex;
@@ -20,14 +19,12 @@ border: solid greenyellow;
 }
 
 .nav_container{
-  border: solid pink;
 
   cursor: pointer;
 }
 
 @media (min-width: 800px) {
   .nav_container{
-    border: solid pink;
 
     display: flex;
     gap: .5rem;
