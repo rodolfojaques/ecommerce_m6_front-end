@@ -3,11 +3,15 @@ import HeaderStl from "./styles";
 import navIcon from "../../assets/bars.png"
 import logoIcon from "../../assets/Motors_shop.png"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Header () {
 
   const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(()=>{
+    window.innerWidth > 800? setIsMobile(false): setIsMobile(true)
+  },[])
 
   window.addEventListener("resize", () => {
     window.innerWidth > 800? setIsMobile(false): setIsMobile(true)
