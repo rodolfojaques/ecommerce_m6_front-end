@@ -4,6 +4,7 @@ import navIcon from "../../assets/bars.png"
 import logoIcon from "../../assets/Motors_shop.png"
 
 import { useEffect, useState } from "react";
+import { Button } from "../Button";
 
 function Header () {
 
@@ -50,7 +51,7 @@ function Header () {
             :
             <div className="user_options">
               <p className="nav_btn">Fazer Login</p>
-              <button className="nav_btn">Cadastrar</button>
+              <Button color={"var('--color-grey-0')"} >Cadastrar</Button>
             </div>        
           }         
         </section>
