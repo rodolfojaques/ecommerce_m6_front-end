@@ -9,6 +9,8 @@ function Header () {
 
   const [isMobile, setIsMobile] = useState(true);
 
+  const [loged, setLoged] = useState(false)
+
   useEffect(()=>{
     window.innerWidth > 800? setIsMobile(false): setIsMobile(true)
   },[])
@@ -37,10 +39,20 @@ function Header () {
             <p className="nav_btn">Leilão</p>
           </div>
           <p className="division">|</p>
-          <div className="user_options">
-            <p className="nav_btn">Fazer Login</p>
-            <button className="nav_btn">Cadastrar</button>
-          </div>          
+          {
+            loged?
+            <div className="user_options">
+              <div className="img_profile">
+                <p className="initials">NU</p>
+              </div>
+              <p className="nav_btn"> Name User</p>
+            </div> 
+            :
+            <div className="user_options">
+              <p className="nav_btn">Fazer Login</p>
+              <button className="nav_btn">Cadastrar</button>
+            </div>        
+          }         
         </section>
       }
       </HeaderStl>
