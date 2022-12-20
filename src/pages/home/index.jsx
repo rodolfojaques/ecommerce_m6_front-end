@@ -8,6 +8,7 @@ function Home () {
         <HomeStl>
           <Header />
           <ListCards/>
+
         </HomeStl>
 
     )
