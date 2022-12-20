@@ -6,10 +6,10 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0px;
         padding: 0px;
         list-style: none;
-        box-sizing: border-box;        
+        box-sizing: border-box;
     };
     body{
-        font-family: 'Inter';
+        font-family: "Inter";
     }
     :root{
         --color-brand-1: #4529E6;
@@ -46,6 +46,12 @@ export const GlobalStyle = createGlobalStyle`
         --color-random-10: #6100FF;
         --color-random-11: #5700E3;
         --color-random-12: #30007D;
+    }
+    a{
+        text-decoration: none;
+    }
+    button{
+        border: none;
     }
 
 `;
