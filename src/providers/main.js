@@ -1,17 +1,8 @@
-import { createContext, useState } from "react";
+import { CardsProvider } from "./cards";
 
-export const MainContext = createContext([]);
 
 export function MainProvider({children}){
-
-  const [stringEx, setStringEx] = useState("ex");
-
   return (
-    <MainContext.Provider value={{
-      stringEx, 
-      setStringEx
-    }}>
-      {children}
-    </MainContext.Provider>
+    <CardsProvider>{children}</CardsProvider>
   )
 };
