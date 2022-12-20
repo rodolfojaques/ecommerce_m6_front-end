@@ -1,33 +1,33 @@
 import { CardProdStyle } from "./styles";
 
-import imgBase from "../../assets/Motors_shop.png";
 import { Button } from "../Button";
 
-function CardProduct({type="userSimple"}) {
-
+function CardProduct(props) {
+    const typeCard = "simpleCard"
+    console.log(props)
     return (
         <>
         {
-            type === "userAdmin"
+            typeCard === "userAdmin"
             ?
             <CardProdStyle>
                 <div className="container_img">
-                    <img className="img_prod" src={imgBase} alt="" />
+                    <img className="img_prod" src={props.image} alt={props.tytle} />
                 </div>
-                <h3>Product title stays here - max 1 line</h3>
+                <h3>{props.tytle}</h3>
                 <p className="description">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...
+                {props.descryption}
                 </p> 
                 <div className="foot_card">
                     <div className="container_infos">
                         <div className="infos">
-                            0 KM
+                            {props.mileage}
                         </div>
                         <div className="infos">
-                            2019
+                            {props.year}
                         </div>                    
                     </div>
-                    <p className="price"><span>R$ </span>00.000,00</p>
+                    <p className="price"><span>R$ </span>{props.price}</p>
                 </div>
                 <div className="buttons">
                     <Button color={"var('--color-grey-0')"}>Editar</Button>
@@ -37,11 +37,11 @@ function CardProduct({type="userSimple"}) {
             :
             <CardProdStyle>
                 <div className="container_img">
-                    <img className="img_prod" src={imgBase} alt="" />
+                    <img className="img_prod" src={props.image} alt={props.tytle}/>
                 </div>
-                <h3>Product title stays here - max 1 line</h3>
+                <h3>{props.tytle}</h3>
                 <p className="description">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...
+                    {props.descryption}
                 </p>
                 <div className="user_name">
                     <div className="img_profile_card">
@@ -52,13 +52,13 @@ function CardProduct({type="userSimple"}) {
                 <div className="foot_card">
                     <div className="container_infos">
                         <div className="infos">
-                            0 KM
+                            {props.mileage}
                         </div>
                         <div className="infos">
-                            2019
+                            {props.year}
                         </div>                    
                     </div>
-                    <p className="price"><span>R$ </span>00.000,00</p>
+                    <p className="price"><span>R$ </span>{props.price}</p>
                 </div>
             </CardProdStyle>        
         }        
