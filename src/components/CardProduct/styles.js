@@ -22,6 +22,10 @@ justify-content: space-between;
     align-items: center;
 }
 
+img{
+    width: 100%;
+}
+
 h3{
     margin-left: .1rem;
     color: var("--color-grey-1");

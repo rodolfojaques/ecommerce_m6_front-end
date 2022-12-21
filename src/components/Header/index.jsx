@@ -56,7 +56,13 @@ function Header () {
             :
             <div className="user_options">
               <p className="nav_btn">Fazer Login</p>
-              <Button color={"var('--color-grey-0')"} >Cadastrar</Button>
+              <Button 
+                color="var(--color-grey-0)"
+                border="var(--color-grey-4)"
+                
+              >
+                Cadastrar
+              </Button>
             </div>
                     
           }         
