@@ -7,13 +7,13 @@ const StyleListCards = styled.div`
   flex-direction: column;
   justify-content: baseline;
   align-items: flex-start;
-  
+  gap: 40px;
+  overflow-x: scroll;
 
   h5{
     font-size: 24px;
     font-weight: 600;
     color: var(--color-grey-1);
-    margin: 1rem;
   }
   ul{
     display: flex;

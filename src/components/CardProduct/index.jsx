@@ -58,7 +58,12 @@ function CardProduct(props) {
                             {props.year}
                         </div>                    
                     </div>
-                    <p className="price"><span>R$ </span>{props.price}</p>
+                    <p className="price">{
+                        parseFloat(props.price).toLocaleString("pt-br", {
+                            style: "currency",
+                            currency: "BRL",
+                        })}
+                    </p>
                 </div>
             </CardProdStyle>        
         }        

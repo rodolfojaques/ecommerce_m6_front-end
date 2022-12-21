@@ -7,8 +7,8 @@ function Home () {
     return(
         <HomeStl>
           <Header />
-          <ListCards/>
-
+          <ListCards typeCard="cars"/>
+          <ListCards typeCard="motocycles"/>
         </HomeStl>
 
     )
