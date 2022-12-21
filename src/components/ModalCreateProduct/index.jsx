@@ -1,10 +1,52 @@
 import { Button } from "../Button"
 import { FormCreateProductStyle } from "./styles"
 
+import * as yup from 'yup';
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useState } from "react";
+
+import { useContext } from "react";
+import { CardsContext } from "../../providers/cards";
+
 function FormCreateProduct(){
+
+    const [typeTransaction, setTypeTransaction] = useState("Venda")
+    const [typeVeicle, setTypeVeicle] = useState("Carro")
+
+    const { cars, setCars, motocycles, setMotocycles } = useContext(CardsContext);
+
+    const schema = yup.object().shape({
+        tytle: yup.string().required("Título é um campo obrigatório*"),
+        year: yup.string().required("Ano é um campo obrigatório"),
+        mileage: yup.string().required("Quilometragem é um campo obrigatório*"),
+        price: yup.string().required("Preço é um campo obrigatório*"),
+        descryption: yup.string().required("Descrição é um campo obrigatório*"),
+        image: yup.string().required("Imagem é um campo obrigatório*"),
+    })
+  
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schema)
+    })
+  
+    
+    const formSchema = async data => {
+        const newData = {
+            ...data,
+            type: typeTransaction,
+            category: typeVeicle
+        }
+        console.log(newData);
+        if(typeTransaction === "Venda" && typeVeicle === "Carro"){
+            setCars([...cars, newData])
+        }else if(typeTransaction === "Venda" && typeVeicle === "Moto"){
+            setMotocycles([...motocycles, newData])
+        }
+    };
+
     return(
         <FormCreateProductStyle>
-            <form className="form_cont">
+            <form onSubmit={handleSubmit(formSchema)} className="form_cont">
                 <div className="title_form">
                     <p className="text_title">
                         Criar anúncio
@@ -16,11 +58,13 @@ function FormCreateProduct(){
                         Tipo de anúncio
                     </p>
                     <div className="btn_type">
-                        <Button 
+                        <Button type="Button"
+                        onClick={()=> setTypeTransaction("Venda")} 
                         background={"var(--color-brand-1)"}
                         color="#FFFFFF"
                         border={"var(--color-brand-1)"}>Venda</Button>
-                        <Button 
+                        <Button  type="Button"
+                        onClick={()=> setTypeTransaction("Leilão")} 
                         background="#FFFFFF"
                         color={"var(--color-grey-0)"}
                         border={"var(--color-grey-0)"}>Leilão</Button>
@@ -31,10 +75,11 @@ function FormCreateProduct(){
                     <label htmlFor="title" className="label">Título</label>
                     <input 
                     type="text" 
-                    name="title" 
+                    name="tytle" 
                     id="title_ann" 
                     className="title_ann"
-                    placeholder="Digitar título"/>
+                    placeholder="Digitar título"
+                    {...register("tytle")}/>
                 </div>
                 <div className="triple_container">
                     <div className="doble_inputs">
@@ -45,16 +90,18 @@ function FormCreateProduct(){
                             name="year" 
                             id="year_ann" 
                             className="title_ann"
-                            placeholder="2018"/>
+                            placeholder="2018"
+                            {...register("year")}/>
                         </div>
                         <div className="inputs">
                             <label htmlFor="km" className="label">Quilometragem</label>
                             <input 
                             type="text" 
-                            name="km" 
+                            name="mileage" 
                             id="km_ann" 
                             className="title_ann"
-                            placeholder="0"/>
+                            placeholder="0"
+                            {...register("mileage")}/>
                         </div>
                     </div>
                     <div className="inputs">
@@ -64,41 +111,46 @@ function FormCreateProduct(){
                         name="price" 
                         id="price_ann" 
                         className="title_ann"
-                        placeholder="50.000,00"/>
+                        placeholder="50.000,00"
+                        {...register("price")}/>
                     </div>                   
                 </div> 
                 <div className="inputs">
-                    <label htmlFor="description" className="label">Descrição</label>
+                    <label htmlFor="descryption" className="label">Descrição</label>
                     <input 
                     type="text" 
-                    name="description" 
+                    name="descryption" 
                     id="description_ann" 
                     className="title_ann"
-                    placeholder="Digitar descrição"/>
+                    placeholder="Digitar descrição"
+                    {...register("descryption")}/>
                 </div>
                 <div className="type_ann">
                     <p className="ttl_type">
                         Tipo de veículo
                     </p>
                     <div className="btn_type">
-                        <Button 
+                        <Button type="Button"
+                        onClick={()=> setTypeVeicle("Carro")} 
                         background={"var(--color-brand-1)"}
                         color="#FFFFFF"
                         border={"var(--color-brand-1)"}>Carro</Button>
-                        <Button 
+                        <Button type="Button"
+                        onClick={()=> setTypeVeicle("Moto")} 
                         background="#FFFFFF"
                         color={"var(--color-grey-0)"}
                         border={"var(--color-grey-0)"}>Moto</Button>
                     </div>
                 </div>
                 <div className="inputs">
-                    <label htmlFor="img" className="label">Imagem da capa</label>
+                    <label htmlFor="image" className="label">Imagem da capa</label>
                     <input 
                     type="text" 
-                    name="img" 
-                    id="img_ann" 
+                    name="image" 
+                    id="image_ann" 
                     className="title_ann"
-                    placeholder="https://image.com"/>
+                    placeholder="https://image.com"
+                    {...register("image")}/>
                 </div>
                 <div className="inputs">
                     <label htmlFor="img_galery" className="label">{"1"}° Imagem da galeria</label>
@@ -122,17 +174,16 @@ function FormCreateProduct(){
                     Adicionar campo para a imagem da galeria
                 </span>
                 <div className="btn_type">
-                    <Button 
+                    <Button type="Button"
                     background={"var(--color-grey-6)"}
                     color={"var(--color-grey-0)"}
                     border={"var(--color-grey-6)"}>Cancelar</Button>
-                    <Button 
+                    <Button
                     background={"var(--color-brand-3)"}
                     color="#FFFFFF"
                     border={"var(--color-brand-3)"}>Criar anúncio</Button>
                 </div>                
             </form>
-
         </FormCreateProductStyle>
     )
 }
