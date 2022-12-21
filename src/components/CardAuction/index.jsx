@@ -9,12 +9,13 @@ import { Button } from "../Button";
 import { FootButton } from "./styles";
 import { FootButtonAdmin } from "./styles";
 
-function CardAuction({type="userSimple"}) {
-
+function CardAuction(props) {
+    const typeCard = "simpleCard"
+ 
     return (
         <>
         {
-            type === "userAdmin"
+            typeCard === "userAdmin"
             ?
             <>
             <CardAuctionStyle>
@@ -81,13 +82,13 @@ function CardAuction({type="userSimple"}) {
                         <p className="price_l"><span>R$ </span>00.000,00</p>
                     </div>
                 </ContainerStyle>
+                <FootButton>
+                    <p className="foot_txt">
+                        Acessar a página do leilão
+                    </p>
+                    <img src={arrow} alt="seta" className="arrow" />                
+                </FootButton>             
             </CardAuctionStyle> 
-            <FootButton>
-                <p className="foot_txt">
-                    Acessar a página do leilão
-                </p>
-                <img src={arrow} alt="seta" className="arrow" />                
-            </FootButton>             
             </>       
         }        
         </>
