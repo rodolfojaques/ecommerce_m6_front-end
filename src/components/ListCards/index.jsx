@@ -3,22 +3,24 @@ import { CardsContext } from "../../providers/cards";
 import CardProduct from "../CardProduct";
 import { StyleListCards } from "./style";
 
-function ListCards (){
-	const { cars } = useContext(CardsContext);
+function ListCards ({typeCard}){
+	const { cars, motocycles } = useContext(CardsContext);
+	
+	const list = typeCard === "cars"? cars : motocycles;
 	
 	return(
 		<StyleListCards>
-			<h5>Carros</h5>
+			{typeCard === "cars" ? <h5>Carros</h5>: <h5>Motos</h5>}
 			<ul>
 				{
-					cars.map((el, index)=>
+					list.map((el, index)=>
 						<CardProduct 
 							key={index}
 							id={el.id}
 							type = {el.type}
 							tytle = {el.tytle}
 							year = {el.year}
-							milage = {el.mileage}
+							mileage = {el.mileage}
 							price = {el.price}
 							descryption = {el.descryption}
 							category = {el.category}
