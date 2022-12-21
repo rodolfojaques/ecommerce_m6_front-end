@@ -1,10 +1,42 @@
 import { Button } from "../Button"
 import { FormEditProductStyle } from "./styles"
 
+import * as yup from 'yup';
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useState } from "react";
+
 function FormEditProduct(){
+
+    const [typeTransaction, setTypeTransaction] = useState("Venda")
+    const [typeVeicle, setTypeVeicle] = useState("Carro")
+
+    const schema = yup.object().shape({
+        tytle: yup.string().required("Título é um campo obrigatório*"),
+        year: yup.string().required("Ano é um campo obrigatório"),
+        mileage: yup.string().required("Quilometragem é um campo obrigatório*"),
+        price: yup.string().required("Preço é um campo obrigatório*"),
+        descryption: yup.string().required("Descrição é um campo obrigatório*"),
+        image: yup.string().required("Imagem é um campo obrigatório*"),
+    })
+  
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schema)
+    })
+  
+    
+    const formSchema = async data => {
+        const newData = {
+            ...data,
+            type: typeTransaction,
+            category: typeVeicle
+        }
+        console.log(newData);
+    };
+
     return(
         <FormEditProductStyle>
-            <form className="form_cont">
+            <form onSubmit={handleSubmit(formSchema)} className="form_cont">
                 <div className="title_form">
                     <p className="text_title">
                         Editar anúncio
@@ -16,11 +48,11 @@ function FormEditProduct(){
                         Tipo de anúncio
                     </p>
                     <div className="btn_type">
-                        <Button 
+                        <Button type="Button" 
                         background={"var(--color-brand-1)"}
                         color="#FFFFFF"
                         border={"var(--color-brand-1)"}>Venda</Button>
-                        <Button 
+                        <Button type="Button" 
                         background="#FFFFFF"
                         color={"var(--color-grey-0)"}
                         border={"var(--color-grey-0)"}>Leilão</Button>
@@ -28,13 +60,14 @@ function FormEditProduct(){
                 </div>
                 <p className="ttl_type">Informações do veículo</p>
                 <div className="inputs">
-                    <label htmlFor="title" className="label">Título</label>
+                    <label htmlFor="tytle" className="label">Título</label>
                     <input 
                     type="text" 
-                    name="title" 
+                    name="tytle" 
                     id="title_ann" 
                     className="title_ann"
-                    placeholder="Digitar título"/>
+                    placeholder="Digitar título"
+                    {...register("tytle")}/>
                 </div>
                 <div className="triple_container">
                     <div className="doble_inputs">
@@ -45,16 +78,18 @@ function FormEditProduct(){
                             name="year" 
                             id="year_ann" 
                             className="title_ann"
-                            placeholder="2018"/>
+                            placeholder="2018"
+                            {...register("year")}/>
                         </div>
                         <div className="inputs">
-                            <label htmlFor="km" className="label">Quilometragem</label>
+                            <label htmlFor="mileage" className="label">Quilometragem</label>
                             <input 
                             type="text" 
-                            name="km" 
+                            name="mileage" 
                             id="km_ann" 
                             className="title_ann"
-                            placeholder="0"/>
+                            placeholder="0"
+                            {...register("mileage")}/>
                         </div>
                     </div>
                     <div className="inputs">
@@ -64,28 +99,30 @@ function FormEditProduct(){
                         name="price" 
                         id="price_ann" 
                         className="title_ann"
-                        placeholder="50.000,00"/>
+                        placeholder="50.000,00"
+                        {...register("price")}/>
                     </div>                   
                 </div> 
                 <div className="inputs">
-                    <label htmlFor="description" className="label">Descrição</label>
+                    <label htmlFor="descryption" className="label">Descrição</label>
                     <input 
                     type="text" 
-                    name="description" 
-                    id="description_ann" 
+                    name="descryption" 
+                    id="descryption_ann" 
                     className="title_ann"
-                    placeholder="Digitar descrição"/>
+                    placeholder="Digitar descrição"
+                    {...register("descryption")}/>
                 </div>
                 <div className="type_ann">
                     <p className="ttl_type">
                         Tipo de veículo
                     </p>
                     <div className="btn_type">
-                        <Button 
+                        <Button type="Button" 
                         background={"var(--color-brand-1)"}
                         color="#FFFFFF"
                         border={"var(--color-brand-1)"}>Carro</Button>
-                        <Button 
+                        <Button type="Button" 
                         background="#FFFFFF"
                         color={"var(--color-grey-0)"}
                         border={"var(--color-grey-0)"}>Moto</Button>
@@ -96,24 +133,25 @@ function FormEditProduct(){
                         Publicado
                     </p>
                     <div className="btn_type">
-                        <Button 
+                        <Button type="Button" 
                         background="#FFFFFF"
                         color={"var(--color-grey-0)"}
                         border={"var(--color-grey-0)"}>Sim</Button>                        
-                        <Button 
+                        <Button type="Button" 
                         background={"var(--color-brand-1)"}
                         color="#FFFFFF"
                         border={"var(--color-brand-1)"}>Não</Button>
                     </div>
                 </div>
                 <div className="inputs">
-                    <label htmlFor="img" className="label">Imagem da capa</label>
+                    <label htmlFor="image" className="label">Imagem da capa</label>
                     <input 
                     type="text" 
-                    name="img" 
-                    id="img_ann" 
+                    name="image" 
+                    id="image_ann" 
                     className="title_ann"
-                    placeholder="https://image.com"/>
+                    placeholder="https://image.com"
+                    {...register("image")}/>
                 </div>
                 <div className="inputs">
                     <label htmlFor="img_galery" className="label">{"1"}° Imagem da galeria</label>
@@ -137,7 +175,7 @@ function FormEditProduct(){
                     Adicionar campo para a imagem da galeria
                 </span>
                 <div className="btn_type">
-                    <Button
+                    <Button type="Button"
                     font_size="12px" 
                     background={"var(--color-grey-6)"}
                     color={"var(--color-grey-0)"}

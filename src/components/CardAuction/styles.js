@@ -4,7 +4,7 @@ export const CardAuctionStyle = styled.li`
 position: relative;
 
 width: 250px;
-height: 330px;
+height: 350px;
 
 
 background: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%);
@@ -18,7 +18,7 @@ justify-content: space-between;
 @media (min-width: 800px) {
     
     height: 290px;
-    width: 640px;
+    width: 550px;
 }
 
 .container_img_l{
@@ -38,7 +38,7 @@ export const ContainerStyle = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
-gap: 1.2rem;
+gap: 1rem;
 
 padding: .8rem;
 
@@ -55,16 +55,16 @@ bottom: 0;
     background-color: var(--color-grey-10);
     border-radius: 32px;
 
-    height: 36px;
+    height: 30px;
     width: 123px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10px 0 3px;
+    padding: 0 10px 0 2px;
 
     .clock{
-        height: 32px;
+        height: 28px;
     }
 
     .time{
@@ -136,14 +136,14 @@ bottom: 0;
         background-color: var(--color-brand-4);
         color: var(--color-brand-1);
 
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 500;
         border-radius: 4px;
 
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 5px;
+        padding: 3px;
     }
 
     .price_l{
@@ -191,7 +191,7 @@ gap: .5rem;
 
 @media (min-width: 800px) {
 
-    width: 640px;
+    width: 550px;
     height: 60px;
     justify-content: flex-start;
     gap: 1rem;
@@ -228,7 +228,7 @@ padding: 0 8px 0 8px;
 
 @media (min-width: 800px) {
 
-    width: 640px;
+    width: 550px;
     height: 60px;
 }
 
