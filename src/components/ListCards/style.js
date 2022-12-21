@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyleListCards = styled.div`
   width: 90%;
-  margin: auto;
+  margin: 2rem auto;
   display: flex;
   flex-direction: column;
   justify-content: baseline;
