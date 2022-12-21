@@ -162,6 +162,8 @@ bottom: 0;
 }
 `;
 
+
+
 export const FootButtonAdmin = styled.div`
 
 background-color: var(--color-brand-1);
@@ -173,6 +175,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 padding: 0 8px 0 8px;
+gap: .5rem;
 
 .foot_txt{
     color: #ffffff;
@@ -195,6 +198,8 @@ padding: 0 8px 0 8px;
 }
 
 `;
+
+
 
 
 export const FootButton = styled.div`

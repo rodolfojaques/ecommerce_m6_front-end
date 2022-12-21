@@ -8,7 +8,7 @@ const StyleButton = styled.button`
   border-radius: 4px;
   height: 48px;
   width: ${(props)=> props.width || "146px"};
-  font-size: 16px;
+  font-size: ${(props)=> props.font_size || "16px"};
   font-weight: 600;
   transition: 300ms;
   cursor: pointer;
