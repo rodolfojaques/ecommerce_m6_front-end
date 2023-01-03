@@ -1,14 +1,13 @@
 import { useContext } from "react";
-import { CardsContext } from "../../providers/cards";
+import { UserContext } from "../../providers/user";
 import CardAuction from "../CardAuction";
 import CardProduct from "../CardProduct";
 import { StyleListCardsProfile } from "./style";
 
 function ListCardsProfile ({typeCard}){
-	const { cars, motocycles } = useContext(CardsContext);
+	const { carsUser, motocyclesUser } = useContext(UserContext);
 	
-	const list = typeCard === "cars" ? cars : motocycles;
-	
+	const list = typeCard === "cars" ? carsUser : motocyclesUser;
 	return(
 		<StyleListCardsProfile>
 			{typeCard === "cars" ? <h5>Carros</h5>: typeCard === "auction" ? <h5>Leilão</h5> : <h5>Motos</h5>}

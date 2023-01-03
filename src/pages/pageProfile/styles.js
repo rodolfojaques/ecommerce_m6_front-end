@@ -76,6 +76,8 @@ gap: 1.5rem;
     }
 
     .name_p{
+      display: flex;
+      gap: .5rem;
 
       color: var(--color-grey-1);
       font-size: 18px;
