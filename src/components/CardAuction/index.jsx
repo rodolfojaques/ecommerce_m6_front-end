@@ -10,12 +10,11 @@ import { FootButton } from "./styles";
 import { FootButtonAdmin } from "./styles";
 
 function CardAuction(props) {
-    const typeCard = "simpleCard"
  
     return (
         <>
         {
-            typeCard === "userAdmin"
+            props.typeUser === "userAdmin"
             ?
             <>
             <CardAuctionStyle>
@@ -43,11 +42,12 @@ function CardAuction(props) {
                         <p className="price_l"><span>R$ </span>00.000,00</p>
                     </div>
                 </ContainerStyle>
+                <FootButtonAdmin>
+                    <Button border={"var(--color-grey-10)"} color={"var(--color-grey-10)"}>Editar</Button>
+                    <Button border={"var(--color-grey-10)"} color={"var(--color-grey-10)"}>Ver como</Button>
+                </FootButtonAdmin>                 
             </CardAuctionStyle>
-            <FootButtonAdmin>
-                <Button border={"var(--color-grey-10)"} color={"var(--color-grey-10)"}>Editar</Button>
-                <Button border={"var(--color-grey-10)"} color={"var(--color-grey-10)"}>Ver como</Button>
-            </FootButtonAdmin>            
+           
             </>
             :
             <>

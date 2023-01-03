@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import axios from "axios";
+import { createContext, useEffect, useState } from "react";
 
 const baseCars = [
     {
@@ -52,8 +53,29 @@ const baseMotocycles = [
 const CardsContext = createContext([]);
 
 function CardsProvider ({children}){
-    const [cars, setCars] = useState(baseCars);
-    const [motocycles, setMotocycles] = useState(baseMotocycles);
+    const [cars, setCars] = useState([]);
+    const [motocycles, setMotocycles] = useState([]);
+
+    useEffect(()=>{
+        axios.get("http://localhost:3001/products")
+        .then((resp)=>{
+            const a = []
+            const b = []
+            if(!!resp.data[0]){
+                resp.data.forEach((veicle)=> {
+                    if(veicle.isCar === true){
+                        a.push(veicle)
+                    }else if(veicle.isCar === false){
+                        b.push(veicle)
+                    }
+  
+                })
+            setCars(a)
+            setMotocycles(b)
+            }
+        })
+        .catch((err)=> console.log(err))       
+    },[])
 
     return(
         <CardsContext.Provider value={{cars, setCars, motocycles, setMotocycles}}> 
