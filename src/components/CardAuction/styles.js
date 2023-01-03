@@ -174,7 +174,7 @@ height: 50px;
 display: flex;
 justify-content: space-between;
 align-items: center;
-padding: 0 8px 0 8px;
+padding: 2px 8px 2px 8px;
 gap: .5rem;
 
 .foot_txt{

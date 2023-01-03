@@ -3,12 +3,10 @@ import { CardProdStyle } from "./styles";
 import { Button } from "../Button";
 
 function CardProduct(props) {
-    const typeCard = "simpleCard"
-    console.log(props)
     return (
         <>
         {
-            typeCard === "userAdmin"
+            props.typeUser === "userAdmin"
             ?
             <CardProdStyle>
                 <div className="container_img">
@@ -30,8 +28,14 @@ function CardProduct(props) {
                     <p className="price"><span>R$ </span>{props.price}</p>
                 </div>
                 <div className="buttons">
-                    <Button color={"var('--color-grey-0')"}>Editar</Button>
-                    <Button color={"var('--color-grey-0')"}>Ver como</Button>
+                    <Button 
+                    color={"var(--color-grey-1)"}
+                    border="var(--color-grey-1)"
+                    >Editar</Button>
+                    <Button 
+                    color={"var(--color-grey-1)"}
+                    border="var(--color-grey-1)"
+                    >Ver como</Button>
                 </div>
             </CardProdStyle>
             :

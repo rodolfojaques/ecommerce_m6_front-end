@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyleListCards = styled.div`
+const StyleListCardsAuctionFake = styled.div`
   width: 90%;
   margin: 2rem auto;
   display: flex;
@@ -9,7 +9,7 @@ const StyleListCards = styled.div`
   align-items: flex-start;
   gap: 40px;
   overflow-x: scroll;
-  
+  padding-bottom: 1rem;
 
   h5{
     font-size: 24px;
@@ -23,4 +23,4 @@ const StyleListCards = styled.div`
   }
 `
 
-export { StyleListCards }
+export { StyleListCardsAuctionFake }
