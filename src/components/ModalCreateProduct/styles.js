@@ -9,11 +9,11 @@ bottom: 0;
 
 background-color: rgba(0, 0, 0, 0.4);
 height: max-content;
+padding: 90px 0px;
 
 
 .form_cont{
     position: relative;
-    top: 90px;
 
     margin: 0 auto 0 auto;
 
