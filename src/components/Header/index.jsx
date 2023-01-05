@@ -7,10 +7,10 @@ import { useEffect, useState } from "react";
 import { Button } from "../Button";
 import { Menu } from "../Menu";
 
-function Header () {
+function Header ({user, log}) {
 
   const [isMobile, setIsMobile] = useState(true);
-  const [loged, setLoged] = useState(false)
+  const [loged, setLoged] = useState(log || false)
   const [showMenu, setShowMenu] = useState(false);
 
   const handleMenu = () => {
@@ -24,6 +24,12 @@ function Header () {
   window.addEventListener("resize", () => {
     window.innerWidth > 800? setIsMobile(false): setIsMobile(true)
   })
+
+  const initial = () => {
+    if(user?.id){
+      return  user?.fullName[0]
+    }
+  }
 
   return (
     <HeaderStl>
@@ -49,17 +55,18 @@ function Header () {
             loged?
             <div className="user_options">
               <div className="img_profile">
-                <p className="initials">NU</p>
+                <p className="initials">{
+                  `${initial()}`
+                }</p>
               </div>
-              <p className="nav_btn"> Name User</p>
+              <p className="nav_btn">{user.fullName}</p>
             </div> 
             :
             <div className="user_options">
               <p className="nav_btn">Fazer Login</p>
               <Button 
                 color="var(--color-grey-0)"
-                border="var(--color-grey-4)"
-                
+                border="var(--color-grey-4)"                
               >
                 Cadastrar
               </Button>
