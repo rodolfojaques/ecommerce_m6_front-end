@@ -10,10 +10,11 @@ import { UserContext } from "../../providers/user"
 
 function PageProfile() {
 	const { user } = useContext(UserContext);
+  console.log(user);
   
   return(
     <>
-    <Header />
+    <Header user={user} log={true}/>
     <PageProfileStyle>
       <section className="sec_head">
         <div className="backcolor backcolor_a"></div>
